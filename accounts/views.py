@@ -57,6 +57,6 @@ def logout_view(request):
 class UserView(View):
 
     def get(self, request, *args, **kwargs):
-        user = get_object_or_404(SiteUser, username=kwargs.get('username'))
-        data = {'user': user}
-        return render(request, 'accounts/user_profile', data)
+        account = get_object_or_404(SiteUser, username=kwargs.get('username'))
+        data = {'account': account}
+        return render(request, 'accounts/user_profile.html', data)
