@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .models import SiteUser
 from .forms import RegisterForm, LoginForm
+from ..topics.models import Topic
 
 
 # Create your views here.

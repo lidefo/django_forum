@@ -45,14 +45,11 @@ class SiteUser(AbstractBaseUser):
 
     objects = SiteUserManager()
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email', ]
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
     def __str__(self):
         return self.username
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Пользователь'

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Форум {% endblock %}
+
+{% block content %}
+<h1>Форумы</h1>
+<a href="{% url 'topic_create' %}">Создать тему</a>
+<br>
+<br>
+<br>
+{% for topic in topics %}
+    {{ topic.title }}
+    <br>
+<a href="account/{{ topic.author }}">{{ topic.author }}</a>
+    <br>
+    <br>
+{% endfor %}
+{% endblock %}
