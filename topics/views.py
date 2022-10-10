@@ -21,7 +21,16 @@ class IndexView(View):
 
     def get(self, request, *args, **kwargs):
         topics = Topic.objects.all()
-        return render(request, 'topics/index.html', {'topics': topics})
+        messages_count = Message.objects.count()
+        topics_count = Topic.objects.count()
+        users_count = User.objects.count()
+        data = {
+            'topics': topics,
+            'messages_count': messages_count,
+            'topics_count': topics_count,
+            'users_count': users_count,
+        }
+        return render(request, 'topics/index.html', data)
 
 
 class TopicCreateView(LoginRequiredMixin, CreateView):

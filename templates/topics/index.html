@@ -3,6 +3,12 @@
 {% block title %} Форум {% endblock %}
 
 {% block content %}
+Всего сообщений: {{ messages_count }}
+<br>
+Всего пользователей: {{ users_count }}
+<br>
+Всего тем: {{ topics_count }}
+<br>
 <h1>Форумы</h1>
 <a href="{% url 'topic_create' %}">Создать тему</a>
 <br>
