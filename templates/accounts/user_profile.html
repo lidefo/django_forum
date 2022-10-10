@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Пользователь {{ account.username }}</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Пользователь {{ account.username }} {% endblock %}
+
+{% block content %}
+<br>
+<br>
 {{ account.username }}
-<br>
+<br><br>
 На форуме с {{ account.register_date }}
-<br>
+<br><br>
 Всего сообщений: {{ messages_count }}
-<br>
+<br><br>
 Созданные темы:
 <ul>
     {% for topic in user_topics %}
-        {{ topic.title }}
+    <a href="/topics/{{ topic.slug }}">{{ topic.title }}</a>
         <br>
         <br>
     {% endfor %}
 </ul>
 
-</body>
-</html>
+{% endblock %}

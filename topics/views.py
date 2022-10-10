@@ -20,7 +20,7 @@ def redirect_to_index(request):
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
-        topics = Topic.objects.all()
+        topics = Topic.objects.order_by('-id')
         messages_count = Message.objects.count()
         topics_count = Topic.objects.count()
         users_count = User.objects.count()
@@ -63,7 +63,7 @@ class TopicView(View):
 
 
 class MessageCreateView(LoginRequiredMixin, CreateView):
-    login_url = 'account/login'
+    login_url = '/account/login'
 
     model = Message
     form_class = MessageForm
