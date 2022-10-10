@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Пользователь {{ account.username }}</title>
 </head>
 <body>
 {{ account.username }}
 <br>
 На форуме с {{ account.register_date }}
 <br>
-Всего сообщений:
+Всего сообщений: {{ messages_count }}
 <br>
 Созданные темы:
+<ul>
+    {% for topic in user_topics %}
+        {{ topic.title }}
+        <br>
+        <br>
+    {% endfor %}
+</ul>
+
 </body>
 </html>

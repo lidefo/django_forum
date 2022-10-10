@@ -2,15 +2,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy  # reverse для FBV, reverse_lazy для CBV
 from django.views import View
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 
-from .models import SiteUser
 from .forms import RegisterForm, LoginForm
-from ..topics.models import Topic
-
+from topics.models import Topic, Message
 
 # Create your views here.
-
+User = get_user_model()
 
 class RegisterView(View):
 
@@ -58,6 +56,12 @@ def logout_view(request):
 class UserView(View):
 
     def get(self, request, *args, **kwargs):
-        account = get_object_or_404(SiteUser, username=kwargs.get('username'))
-        data = {'account': account}
+        account = get_object_or_404(User, username=kwargs.get('username'))
+        user_topics = Topic.objects.filter(author=account).order_by('-id')
+        messages_count = Message.objects.filter(author=account).count()
+        data = {
+            'account': account,
+            'user_topics': user_topics,
+            'messages_count': messages_count,
+        }
         return render(request, 'accounts/user_profile.html', data)

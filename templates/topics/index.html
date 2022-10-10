@@ -9,7 +9,7 @@
 <br>
 <br>
 {% for topic in topics %}
-    {{ topic.title }}
+    <a href="topics/{{ topic.slug }}">{{ topic.title }}</a>
     <br>
 <a href="account/{{ topic.author }}">{{ topic.author }}</a>
     <br>

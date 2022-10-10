@@ -7,3 +7,9 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         exclude = ['author', 'create_date', 'slug']
+
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        exclude = ['author', 'create_date', 'topic']

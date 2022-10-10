@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ topic.title }} {% endblock %}
+
+{% block content %}
+<h1>{{ topic.title }}</h1>
+<br>
+<br>
+<br>
+<a href="{{ domain_redirect }}">Отправить сообщение</a>
+<br>
+<br>
+{% for message in messages %}
+    {{ message.text }} | <a href="account/{{ message.author.username }}"></a>{{ message.author }} | {{ message.create_date }}
+    <br>
+    <br>
+{% endfor %}
+
+{% endblock %}

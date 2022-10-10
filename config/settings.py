@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
+import sys
 
 from pathlib import Path
 from dotenv import load_dotenv
@@ -26,7 +27,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -38,6 +39,7 @@ INTERNAL_IPS = [
 ]
 
 # Application definition
+sys.path.append(str(BASE_DIR))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
