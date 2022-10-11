@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Регистрация</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Регистрация {% endblock %}
+
+{% block content %}
 <div class="col-md-offset-3 col-md-7 mb-5">
  <form class="form-horizontal" method="post">
 	 	{% csrf_token %}
@@ -13,5 +11,4 @@
             <button type="submit" class="btn-primary btn">Зарегистрироваться</button>
  </form>
  </div>
-</body>
-</html>
+{% endblock %}

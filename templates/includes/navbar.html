@@ -1,8 +1,0 @@
-<nav>
-    <a href="{% url 'index' %}">Главное меню</a> |
-    {% if request.user.is_authenticated %}
-        {{user.username}} | <a href="{% url 'logout' %}">Выйти</a>
-    {% else %}
-        <a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Авторизация</a>
-    {% endif %}
-</nav>

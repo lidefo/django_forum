@@ -5,16 +5,20 @@
 {% block content %}
 <br>
 <br>
-{{ account.username }}
+<h1>{{ account.username }}</h1>
 <br><br>
 На форуме с {{ account.register_date }}
 <br><br>
 Всего сообщений: {{ messages_count }}
 <br><br>
 Созданные темы:
+<br><br>
 <ul>
     {% for topic in user_topics %}
-    <a href="/topics/{{ topic.slug }}">{{ topic.title }}</a>
+    <a href="/topics/{{ topic.slug }}"
+    class="btn btn-primary">
+        {{ topic.title }}
+    </a>
         <br>
         <br>
     {% endfor %}

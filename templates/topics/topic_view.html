@@ -9,9 +9,17 @@
 <br>
 <br>
 <br>
-<a href="{{ domain_redirect }}">Отправить сообщение</a>
+
+<a href="{{ domain_redirect }}"
+    class="btn btn-primary">
+    Отправить сообщение
+</a>
 <br>
 <br>
+{{ topic.description }} | <a href="/account/{{ topic.author.username }}">{{ topic.author }}</a> | {{ topic.create_date }}
+<br>
+<br>
+
 {% for message in messages %}
     {{ message.text }} | <a href="/account/{{ message.author.username }}">{{ message.author }}</a> | {{ message.create_date }}
     <br>
