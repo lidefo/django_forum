@@ -58,7 +58,7 @@ class UserView(View):
     def get(self, request, *args, **kwargs):
         account = get_object_or_404(User, username=kwargs.get('username'))
         user_topics = Topic.objects.filter(author=account).order_by('-id')
-        messages_count = Message.objects.filter(author=account).count()
+        messages_count = Message.objects.filter(author=account).count() + user_topics.count()
         data = {
             'account': account,
             'user_topics': user_topics,

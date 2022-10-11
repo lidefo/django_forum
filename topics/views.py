@@ -9,6 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Topic, Message
 from .forms import TopicForm, MessageForm
 
+from pytils.translit import slugify
+
 # Create your views here.
 User = get_user_model()
 
@@ -39,13 +41,14 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Topic
     form_class = TopicForm
     template_name = 'topics/create_topic.html'
-    success_url = 'topics'
 
     def form_valid(self, form):
         topic = form.save(commit=False)
         topic.author = self.request.user
         topic.save()
-        return HttpResponseRedirect(reverse_lazy('index'))
+        slug = slugify(topic.title)
+        url = reverse_lazy('topic_view', kwargs={'slug': slug})
+        return HttpResponseRedirect(url)
 
 
 class TopicView(View):
