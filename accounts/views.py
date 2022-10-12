@@ -53,7 +53,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('index'))
 
 
-class UserView(View):
+class UserView(View):   # показывать созданные темы
 
     def get(self, request, *args, **kwargs):
         account = get_object_or_404(User, username=kwargs.get('username'))

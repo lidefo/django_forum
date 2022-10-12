@@ -23,7 +23,7 @@ class SiteUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username=None, password=None):
+    def create_superuser(self, username, email, password):
         user = self.create_user(
             email,
             username=username,
@@ -46,7 +46,7 @@ class SiteUser(AbstractBaseUser):
     objects = SiteUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return self.username
