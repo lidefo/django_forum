@@ -10,7 +10,9 @@ from topics.models import Topic, Message
 # Create your views here.
 User = get_user_model()
 
+
 class RegisterView(View):
+    '''Return view for register.'''
 
     def get(self, request, *args, **kwargs):
         form = RegisterForm()
@@ -29,6 +31,7 @@ class RegisterView(View):
 
 
 class LoginView(View):
+    '''Return page for login.'''
 
     def get(self, request, *args, **kwargs):
         form = LoginForm()
@@ -49,11 +52,13 @@ class LoginView(View):
 
 
 def logout_view(request):
+    '''Logout function.'''
     logout(request)
     return HttpResponseRedirect(reverse('index'))
 
 
-class UserView(View):   # показывать созданные темы
+class UserView(View):  # показывать созданные темы
+    '''Return page with information about user.'''
 
     def get(self, request, *args, **kwargs):
         account = get_object_or_404(User, username=kwargs.get('username'))

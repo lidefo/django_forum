@@ -20,6 +20,7 @@ def redirect_to_index(request):
 
 
 class IndexView(View):
+    '''This view for main page.'''
 
     def get(self, request, *args, **kwargs):
         topics = Topic.objects.order_by('-id')
@@ -36,6 +37,8 @@ class IndexView(View):
 
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
+    '''This view for create new Topic model. For creating user must be authenticated.'''
+
     login_url = 'account/login'
 
     model = Topic
@@ -52,6 +55,7 @@ class TopicCreateView(LoginRequiredMixin, CreateView):
 
 
 class TopicView(View):
+    '''This view for detail info about topic.'''
 
     def get(self, request, slug):
         topic = get_object_or_404(Topic, slug=slug)
@@ -66,6 +70,8 @@ class TopicView(View):
 
 
 class MessageCreateView(LoginRequiredMixin, CreateView):
+    '''This view for create new Message model. For creating user must be authenticated.'''
+
     login_url = '/account/login'
 
     model = Message
@@ -80,4 +86,3 @@ class MessageCreateView(LoginRequiredMixin, CreateView):
         message.save()
         url = reverse_lazy('topic_view', kwargs={'slug': slug})
         return HttpResponseRedirect(url)
-
