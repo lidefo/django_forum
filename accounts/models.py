@@ -5,7 +5,8 @@ from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 
-class SiteUserManager(BaseUserManager):   # custom UserManager
+class SiteUserManager(BaseUserManager):
+    '''Custom UserManager'''
     def create_user(self, email, username, password=None):
 
         if not email:
@@ -34,7 +35,8 @@ class SiteUserManager(BaseUserManager):   # custom UserManager
         return user
 
 
-class SiteUser(AbstractBaseUser):   # custom User
+class SiteUser(AbstractBaseUser):
+    '''Custom User'''
     first_name = models.CharField(verbose_name='Имя', max_length=30)
     last_name = models.CharField(verbose_name='Фамилия', max_length=40)
     username = models.CharField(verbose_name='Псевдоним', max_length=20, unique=True)

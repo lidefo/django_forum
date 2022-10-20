@@ -3,12 +3,15 @@
 {% block title %} Форум {% endblock %}
 
 {% block content %}
-    Всего сообщений: {{ messages_count }}
-    <br>
-    Всего пользователей: {{ users_count }}
-    <br>
-    Всего тем: {{ topics_count }}
-    <br>
+    <div class="container">
+        Всего сообщений: {{ messages_count }}
+        <br>
+        Всего пользователей: {{ users_count }}
+        <br>
+        Всего тем: {{ topics_count }}
+        <br>
+    </div>
+
     <h1>Форумы</h1>
         <a href="{% url 'topic_create' %}"
            class="btn btn-primary">
@@ -17,11 +20,22 @@
     <br>
     <br>
     <br>
+    <ul>
     {% for topic in topics %}
-        <a href="topics/{{ topic.slug }}">{{ topic.title }}</a>
-        <br>
-        <a href="account/{{ topic.author }}">{{ topic.author }}</a>
-        <br>
-        <br>
+        <li>
+            <div class="btn btn-secondary">
+                <h2>
+                    <a href="topics/{{ topic.slug }}">{{ topic.title }}</a> | {{ topic.create_date }}
+                </h2>
+                <br>
+                <h3>
+                    <a href="account/{{ topic.author }}">{{ topic.author }}</a>
+                </h3>
+            </div>
+            <br>
+            <br>
+        </li>
     {% endfor %}
+    </ul>
+
 {% endblock %}
