@@ -61,4 +61,4 @@ python manage.py runserver
 
 
 ## **P.S**
-### В данный момент разрабатывается API с помощью DRF на основе данного проекта.
+### [API для данного проекта](https://github.com/lidefo/django_forum_api)
