@@ -37,8 +37,8 @@ class SiteUserManager(BaseUserManager):
 
 class SiteUser(AbstractBaseUser):
     '''Custom User'''
-    first_name = models.CharField(verbose_name='Имя', max_length=30)
-    last_name = models.CharField(verbose_name='Фамилия', max_length=40)
+    first_name = models.CharField(verbose_name='Имя', max_length=30, blank=True, default='')
+    last_name = models.CharField(verbose_name='Фамилия', max_length=40, blank=True, default='')
     username = models.CharField(verbose_name='Псевдоним', max_length=20, unique=True)
     email = models.EmailField(verbose_name='Email', unique=True)
     register_date = models.DateField(verbose_name='Дата регистрации', auto_now=True)
