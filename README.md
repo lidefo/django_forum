@@ -1,5 +1,5 @@
 # django_forum
-## [In English](##English documentation) | [In Russian](##Документация на русском)
+## [In English](#English-documentation) | [In Russian](#Документация-на-русском)
 
 ## English documentation
 
